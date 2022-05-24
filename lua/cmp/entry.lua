@@ -384,15 +384,6 @@ entry.get_documentation = function(self)
     })
   end
 
-  if type(item.documentation) == 'string' and item.documentation ~= '' then
-    table.insert(documents, {
-      kind = types.lsp.MarkupKind.PlainText,
-      value = str.trim(item.documentation),
-    })
-  elseif type(item.documentation) == 'table' and item.documentation.value ~= '' then
-    table.insert(documents, item.documentation)
-  end
-
   return vim.lsp.util.convert_input_to_markdown_lines(documents)
 end
 
